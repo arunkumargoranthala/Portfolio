@@ -13,7 +13,6 @@ import './App.css'
 const App = () => (
   <div className="app-container">
     <div className="responsive-container">
-      <Header />
       <Router basename="/Portfolio">
         <Header />
         <div className="app-body">
