@@ -1,4 +1,4 @@
-import {Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import Header from './components/Header'
 import About from './components/About'
@@ -14,16 +14,19 @@ const App = () => (
   <div className="app-container">
     <div className="responsive-container">
       <Header />
-      <div className="app-body">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/skills" component={Skills} />
-          <Route exact path="/projects" component={Projects} />
-          <Route exact path="/contact" component={Contact} />
-          <Route component={Home} />
-        </Switch>
-      </div>
+      <Router basename="/Portfolio">
+        <Header />
+        <div className="app-body">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/skills" component={Skills} />
+            <Route exact path="/projects" component={Projects} />
+            <Route exact path="/contact" component={Contact} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
     </div>
   </div>
 )

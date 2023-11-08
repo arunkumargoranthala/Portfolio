@@ -2,6 +2,7 @@
   "name": "blog-list",
   "private": true,
   "version": "1.0.0",
+  "homepage": "https://arunkumargoranthala.github.io/Portfolio",
   "engines": {
     "node": "^10.13 || 12 || 14 || 15",
     "npm": ">=6"
@@ -23,6 +24,7 @@
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-prettier": "3.3.1",
+    "gh-pages": "6.0.0",
     "husky": "4.3.8",
     "lint-staged": "10.5.4",
     "npm-run-all": "4.1.5",
@@ -36,7 +38,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix src/",
     "format": "prettier --write \"./src\"",
-    "run-all": "npm-run-all --parallel test lint:fix"
+    "run-all": "npm-run-all --parallel test lint:fix",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "lint-staged": {
     "*.js": [
