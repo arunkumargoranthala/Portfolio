@@ -1,0 +1,141 @@
+.user-info-container {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: center;
+  height: 50%;
+  align-items: center;
+}
+
+.user-name {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 60px;
+  color: yellow;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.user-designation {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 40px;
+  
+  color:yellow;
+}
+
+.image1{
+    height: 400px;
+    width: 600px;
+}
+
+.user-info-container2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.wave {
+  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.1s; /* Change to speed up or slow down */
+  animation-iteration-count: infinite; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.buttons-container{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.about-button{
+  background-color: #3f51b5;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 14px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.about-button:hover {
+  background-color: #2f3b87;
+}
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+  .user-info-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+
+  .user-name {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+
+  .user-designation {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .image1 {
+    height: 240px;
+    width: 100%;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-button {
+    margin: 10px 0;
+  }
+
+  .about-button:hover {
+    background-color: #2f3b87;
+  }
+
+  .resume-button{
+    margin-left: 21px;
+  }
+}
