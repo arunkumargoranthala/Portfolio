@@ -16,6 +16,11 @@ const Contact = () => {
     user_email: '',
     message: '',
   })
+  const [errors, setErrors] = useState({
+    user_name: '',
+    user_email: '',
+    message: '',
+  })
 
   const handleInputChange = e => {
     const {name, value} = e.target
@@ -25,16 +30,49 @@ const Contact = () => {
     }))
   }
 
+  const validateForm = () => {
+    const newErrors = {
+      user_name: '',
+      user_email: '',
+      message: '',
+    }
+
+    let isValid = true
+
+    if (!formData.user_name.trim()) {
+      newErrors.user_name = 'Please enter your name'
+      isValid = false
+    }
+
+    if (!formData.user_email.trim()) {
+      newErrors.user_email = 'Please enter your email'
+      isValid = false
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Please enter your message'
+      isValid = false
+    }
+
+    setErrors(newErrors)
+    return isValid
+  }
+
   const sendEmail = e => {
     e.preventDefault()
+
+    if (!validateForm()) {
+      return
+    }
+
     setLoading(true)
 
     emailjs
       .sendForm(
-        'service_07t234l', // Replace with your service ID
-        'template_kw37pm5', // Replace with your template ID
+        'service_07t234l',
+        'template_kw37pm5',
         form.current,
-        '0Thqx9s95gzBPBAW-', // Replace with your user ID
+        '0Thqx9s95gzBPBAW-',
       )
       .then(result => {
         console.log(result.text)
@@ -67,6 +105,9 @@ const Contact = () => {
           value={formData.user_name}
           onChange={handleInputChange}
         />
+        {errors.user_name && (
+          <div className="error-message">{errors.user_name}</div>
+        )}
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -75,12 +116,18 @@ const Contact = () => {
           value={formData.user_email}
           onChange={handleInputChange}
         />
+        {errors.user_email && (
+          <div className="error-message">{errors.user_email}</div>
+        )}
         <label htmlFor="message">Message</label>
         <textarea
           name="message"
           value={formData.message}
           onChange={handleInputChange}
         />
+        {errors.message && (
+          <div className="error-message">{errors.message}</div>
+        )}
         <input type="submit" value="Send" />
       </form>
       {loading && <div className="loading">Loading...</div>}
